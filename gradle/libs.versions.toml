@@ -1,0 +1,27 @@
+[versions]
+jdk = "21"
+kotlin = "2.1.21"
+
+# ------------------------------------------------------
+# versions
+# ------------------------------------------------------
+
+# spring boot
+spring-boot = "3.5.3"
+spring-gradle-dependency-management = "1.1.7"
+
+# dev dependencies
+lombok = "8.14"
+
+# ------------------------------------------------------
+# libaries
+# ------------------------------------------------------
+
+[libraries]
+
+# spring dependencies
+spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
+spring-dependency-management-plugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-gradle-dependency-management" }
+
+# compiler plugins
+lombok-plugin = { module = "io.freefair.lombok:io.freefair.lombok.gradle.plugin", version.ref = "lombok" }

@@ -1,28 +1,14 @@
 plugins {
-    java
-    id("org.springframework.boot") version "3.5.4"
-    id("io.spring.dependency-management") version "1.1.7"
+    idea
 }
 
-group = "com.matchmyjob"
-version = "0.0.1-SNAPSHOT"
+idea {
+    module.isDownloadJavadoc = true
+    module.isDownloadSources = true
+}
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+tasks {
+    wrapper {
+        distributionType = Wrapper.DistributionType.ALL
     }
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
