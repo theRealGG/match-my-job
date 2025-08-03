@@ -1,17 +1,24 @@
-[versions]
-jdk = "21"
-kotlin = "2.1.21"
-
 # ------------------------------------------------------
 # versions
 # ------------------------------------------------------
+
+[versions]
+jdk = "21"
+kotlin = "2.1.21"
 
 # spring boot
 spring-boot = "3.5.3"
 spring-gradle-dependency-management = "1.1.7"
 
+# core libraries
+vavr = "0.10.6"
+
 # dev dependencies
 lombok = "8.14"
+
+# test dependencies
+datafaker = "2.4.3"
+vavr-assertj = "0.4.3"
 
 # ------------------------------------------------------
 # libaries
@@ -20,8 +27,22 @@ lombok = "8.14"
 [libraries]
 
 # spring dependencies
+spring-boot-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot" }
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 spring-dependency-management-plugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-gradle-dependency-management" }
 
+vavr = { module = "io.vavr:vavr", version.ref = "vavr" }
+
 # compiler plugins
 lombok-plugin = { module = "io.freefair.lombok:io.freefair.lombok.gradle.plugin", version.ref = "lombok" }
+
+# test dependencies
+mockito-core = { module = "org.mockito:mockito-core" }
+mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter" }
+assertj-core = { module = "org.assertj:assertj-core" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params" }
+datafaker = { module = 'net.datafaker:datafaker', version.ref = "datafaker" }
+vavr-assertj = { module = "org.assertj:assertj-vavr", version.ref = "vavr-assertj" }
+
+[bundles]
+test-core = ["mockito-core", "mockito-junit-jupiter", "assertj-core", "junit-jupiter-params", "vavr-assertj"]

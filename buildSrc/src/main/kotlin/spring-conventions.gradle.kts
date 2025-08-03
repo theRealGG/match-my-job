@@ -11,9 +11,6 @@ springBoot {
         excludes.set(setOf("time"))
     }
 }
-
-val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
-
 tasks.bootJar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
