@@ -1,5 +1,5 @@
 plugins {
-    `java-lib-conventions`
+    id("com.matchmyjob.java-lib-conventions")
 }
 
 

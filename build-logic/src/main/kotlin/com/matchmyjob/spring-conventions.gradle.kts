@@ -1,5 +1,7 @@
+package com.matchmyjob
+
 plugins {
-    id("java-conventions")
+    id("com.matchmyjob.java-conventions")
     id("org.springframework.boot")
     id("io.spring.dependency-management")
 }
