@@ -1,0 +1,14 @@
+type Name {
+    firstname:  String!
+    lastname: String!
+    nickname: String
+}
+
+type Applicant {
+    name: Name!
+}
+
+
+type Query {
+    applicant(username: String!): Applicant
+}

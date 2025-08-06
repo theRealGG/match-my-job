@@ -10,11 +10,18 @@ kotlin = "2.1.21"
 spring-boot = "3.5.3"
 spring-gradle-dependency-management = "1.1.7"
 
+
+# spring boot extra
+dgs-platform = "10.2.1"
+
+
+
 # core libraries
 vavr = "0.10.6"
 
 # dev dependencies
 lombok = "8.14"
+dgsCodegen = "8.1.0"
 
 # test dependencies
 datafaker = "2.4.3"
@@ -28,6 +35,7 @@ vavr-assertj = "0.4.3"
 
 # spring dependencies
 spring-boot-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot" }
+netflix-dgs-bom = { group = "com.netflix.graphql.dgs", name = "graphql-dgs-platform-dependencies", version.ref = "dgs-platform" }
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 spring-dependency-management-plugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-gradle-dependency-management" }
 
@@ -35,6 +43,7 @@ vavr = { module = "io.vavr:vavr", version.ref = "vavr" }
 
 # compiler plugins
 lombok-plugin = { module = "io.freefair.lombok:io.freefair.lombok.gradle.plugin", version.ref = "lombok" }
+dgs-codegen-plugin = { module = "com.netflix.dgs.codegen:com.netflix.dgs.codegen.gradle.plugin", version.ref = "dgsCodegen" }
 
 # test dependencies
 mockito-core = { module = "org.mockito:mockito-core" }

@@ -27,7 +27,12 @@ lombok {
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.boot:spring-boot-dependencies:${libs.findVersion("spring-boot").get()}")
+        mavenBom(
+            "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:${
+                libs.findVersion("dgs-platform").get()
+            }"
+        )
+        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
     }
 }
 
@@ -51,11 +56,20 @@ tasks.compileJava {
     options.compilerArgs.addAll(
         listOf(
             "-Xlint:all",
-            "-Amapstruct.defaultComponentModel=spring"
+            "-Amapstruct.defaultComponentModel=spring",
+            "-parameters"
         )
     )
     options.encoding = "UTF-8"
     options.annotationProcessorPath = configurations.annotationProcessor.get()
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events = setOf(FAILED)
+        exceptionFormat = FULL
+    }
 }
 
 tasks.jar {
@@ -66,14 +80,6 @@ tasks.jar {
                 "Implementation-Version" to project.version,
             )
         )
-    }
-}
-
-tasks.test {
-    useJUnitPlatform()
-    testLogging {
-        events = setOf(FAILED)
-        exceptionFormat = FULL
     }
 }
 

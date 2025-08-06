@@ -15,6 +15,16 @@ val kotlinVersion = "KOTLIN_${
     libs.versions.kotlin.get().substringBeforeLast(".").replace(".", "_")
 }";
 
+gradlePlugin {
+    plugins {
+        register("graphql-codegen") {
+            id = "com.matchmyjob.graphql.codegen"
+            implementationClass = "com.matchmyjob.plugins.GraphqlCodegenPlugin"
+        }
+    }
+}
+
+
 kotlin {
     jvmToolchain {
         languageVersion.set(
@@ -45,4 +55,5 @@ dependencies {
     implementation(libs.spring.dependency.management.plugin)
     // dev dependencies
     implementation(libs.lombok.plugin)
+    implementation(libs.dgs.codegen.plugin)
 }
