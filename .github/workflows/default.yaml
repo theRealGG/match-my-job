@@ -1,0 +1,61 @@
+name: Default
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'main'
+      - 'release/**'
+concurrency:
+  # Cancel old runs if they have not finished yet
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  JVM_OPTS: -Xmx4096m
+  GRADLE_OPTS: |
+    -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError
+    -Dorg.gradle.caching=true
+    -Dorg.gradle.configureondemand=true
+
+jobs:
+
+  validation:
+    name: "Gradle Validation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gradle/actions/wrapper-validation@v3
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy CI gradle.properties
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Build & Coverage
+        run: ./gradlew build jacocoRootReport
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: build/reports/jacoco/jacocoRootReport/html
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.7.2
+        with:
+          paths: |
+            ${{github.workspace}}/build/reports/jacoco/jacoco.xml,
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 5
+          min-coverage-changed-files: 5
+          update-comment: true
