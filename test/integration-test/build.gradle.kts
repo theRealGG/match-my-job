@@ -10,3 +10,8 @@ dependencies {
     testImplementation("com.netflix.graphql.dgs:dgs-starter-test")
     testImplementation(project(":incoming:web:graphql:applicant-graphql"))
 }
+
+tasks.test {
+    description = "Runs integration tests"
+    shouldRunAfter(":build")
+}

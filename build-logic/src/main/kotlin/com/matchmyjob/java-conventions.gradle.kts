@@ -5,6 +5,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 
 plugins {
     java
+    jacoco
     id("io.freefair.lombok")
     id("io.spring.dependency-management")
 }
@@ -20,6 +21,9 @@ java {
     }
 }
 
+jacoco {
+    toolVersion = "0.8.13"
+}
 
 lombok {
     version = "1.18.30"
@@ -64,12 +68,25 @@ tasks.compileJava {
     options.annotationProcessorPath = configurations.annotationProcessor.get()
 }
 
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    classDirectories.setFrom(
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude("**/generated/**")
+            }
+        })
+    )
+}
+
+
 tasks.test {
     useJUnitPlatform()
     testLogging {
         events = setOf(FAILED)
         exceptionFormat = FULL
     }
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.jar {
