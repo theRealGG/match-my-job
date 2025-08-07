@@ -12,7 +12,7 @@ spring-gradle-dependency-management = "1.1.7"
 
 
 # spring boot extra
-dgs-platform = "10.2.1"
+dgs-platform = "10.2.4"
 
 
 
