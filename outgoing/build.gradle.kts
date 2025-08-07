@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":outgoing:persistence"))
+    api(project(":outgoing:persistence"))
 }
