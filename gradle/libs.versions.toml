@@ -7,7 +7,7 @@ jdk = "21"
 kotlin = "2.1.21"
 
 # spring boot
-spring-boot = "3.5.3"
+spring-boot = "3.5.4"
 spring-gradle-dependency-management = "1.1.7"
 
 
@@ -17,9 +17,8 @@ dgs-platform = "10.2.1"
 
 
 # core libraries
-vavr = "0.10.6"
+vavr = "0.10.7"
 vavr-jackson = "0.10.3"
-
 # dev dependencies
 lombok = "8.14"
 dgsCodegen = "8.1.0"
