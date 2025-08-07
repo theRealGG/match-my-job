@@ -18,6 +18,7 @@ dgs-platform = "10.2.1"
 
 # core libraries
 vavr = "0.10.6"
+vavr-jackson = "0.10.3"
 
 # dev dependencies
 lombok = "8.14"
@@ -40,7 +41,7 @@ spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gra
 spring-dependency-management-plugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-gradle-dependency-management" }
 
 vavr = { module = "io.vavr:vavr", version.ref = "vavr" }
-
+vavr-jackson-module = { module = "io.vavr:vavr-jackson", version.ref = "vavr-jackson" }
 # compiler plugins
 lombok-plugin = { module = "io.freefair.lombok:io.freefair.lombok.gradle.plugin", version.ref = "lombok" }
 dgs-codegen-plugin = { module = "com.netflix.dgs.codegen:com.netflix.dgs.codegen.gradle.plugin", version.ref = "dgsCodegen" }

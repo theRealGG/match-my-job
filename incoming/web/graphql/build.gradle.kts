@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":incoming:web:graphql:applicant-graphql"))
+    api(project(":incoming:web:graphql:applicant-graphql"))
 }

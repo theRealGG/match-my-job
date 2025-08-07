@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":incoming:web"))
+    api(project(":incoming:web"))
 }
