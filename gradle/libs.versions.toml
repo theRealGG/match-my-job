@@ -17,7 +17,7 @@ dgs-platform = "10.2.1"
 
 
 # core libraries
-vavr = "0.10.6"
+vavr = "0.10.7"
 
 # dev dependencies
 lombok = "8.14"
