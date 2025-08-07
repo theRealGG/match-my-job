@@ -21,7 +21,7 @@ vavr = "0.10.7"
 vavr-jackson = "0.10.3"
 # dev dependencies
 lombok = "8.14"
-dgsCodegen = "8.1.0"
+dgsCodegen = "8.1.1"
 
 # test dependencies
 datafaker = "2.4.3"
